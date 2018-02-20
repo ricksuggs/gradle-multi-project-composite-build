@@ -1,0 +1,43 @@
+buildscript {
+    buildscript {
+        ext {
+            springBootVersion = '1.5.5.RELEASE'
+        }
+        repositories {
+            maven {
+                mavenLocal()
+                mavenCentral()
+                url 'http://repo.springsource.org/libs-milestone/'
+                maven { url "https://oss.sonatype.org/content/repositories/releases" }
+                maven { url "https://repo.spring.io/release" }
+                maven { url 'http://repo.spring.io/plugins-release' }
+            }
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
+    }
+}
+
+subprojects {
+
+    ext {
+        springBootVersion = '1.5.5.RELEASE'
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: "io.spring.dependency-management"
+
+    group = "org.sample"
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+
+        mavenLocal()
+        mavenCentral()
+    }
+
+}
